@@ -30,6 +30,3 @@ PRODUCT_PACKAGES += \
 # Tethering
 PRODUCT_PACKAGES += \
     TetheringOverlay
-
-# Touch
-include hardware/google/pixel/touch/device.mk
