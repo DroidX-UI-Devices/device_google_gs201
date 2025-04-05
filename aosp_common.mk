@@ -18,7 +18,7 @@
 # All components inherited here go to system image
 #
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/generic_system.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
 # Enable CSI checking
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := relaxed
@@ -47,6 +47,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_vendor.mk)
 ifneq ($(BOARD_WITHOUT_RADIO),true)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_vendor.mk)
 endif
+
+# Inherit default art config
+$(call inherit-product, $(SRC_TARGET_DIR)/product/default_art_config.mk)
 
 #$(call inherit-product, device/google/gs201/device.mk)
 #$(call inherit-product-if-exists, vendor/google_devices/gs201/proprietary/device-vendor.mk)
