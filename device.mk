@@ -319,26 +319,26 @@ PRODUCT_VENDOR_PROPERTIES += ro.surface_flinger.prime_shader_cache.ultrahdr=1
 
 # Device Manifest, Device Compatibility Matrix for Treble
 DEVICE_MANIFEST_FILE := \
-	device/google/gs201/manifest.xml
+	device/google/gs201/configs/manifests/manifest.xml
 
 BOARD_USE_CODEC2_AIDL := V1
 ifneq (,$(filter aosp_%,$(TARGET_PRODUCT)))
 DEVICE_MANIFEST_FILE += \
-	device/google/gs201/manifest_media_aosp.xml
+	device/google/gs201/configs/manifests/manifest_media_aosp.xml
 
 PRODUCT_COPY_FILES += \
-	device/google/gs201/media_codecs_aosp_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2.xml
+	device/google/gs201/configs/media/media_codecs_aosp_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2.xml
 else
 DEVICE_MANIFEST_FILE += \
-	device/google/gs201/manifest_media.xml
+	device/google/gs201/configs/manifests/manifest_media.xml
 
 PRODUCT_COPY_FILES += \
-	device/google/gs201/media_codecs_bo_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2.xml \
-	device/google/gs201/media_codecs_aosp_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_aosp_c2.xml
+	device/google/gs201/configs/media/media_codecs_bo_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2.xml \
+	device/google/gs201/configs/media/media_codecs_aosp_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_aosp_c2.xml
 endif
 
 DEVICE_MATRIX_FILE := \
-	device/google/gs201/compatibility_matrix.xml
+	device/google/gs201/configs/manifests/compatibility_matrix.xml
 
 DEVICE_PACKAGE_OVERLAYS += device/google/gs201/overlay
 
@@ -499,7 +499,7 @@ endif
 
 
 PRODUCT_COPY_FILES += \
-	device/google/gs201/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
+	device/google/gs201/configs/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
 
 -include hardware/google/pixel/power-libperfmgr/aidl/device.mk
 
@@ -785,7 +785,7 @@ include device/google/gs-common/mediacodec/common/mediacodec_common.mk
 include device/google/gs-common/mediacodec/samsung/mediacodec_samsung.mk
 
 PRODUCT_COPY_FILES += \
-	device/google/gs201/media_codecs_performance_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance_c2.xml \
+	device/google/gs201/configs/media/media_codecs_performance_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance_c2.xml \
 
 PRODUCT_PROPERTY_OVERRIDES += \
        debug.c2.use_dmabufheaps=1 \
@@ -809,9 +809,8 @@ PRODUCT_PROPERTY_OVERRIDES += media.c2.hal.selection=aidl
 
 # 2. OpenMAX IL
 PRODUCT_COPY_FILES += \
-	device/google/gs201/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
-	device/google/gs201/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
-####################################
+	device/google/gs201/configs/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
+	device/google/gs201/configs/media/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
 
 # Telephony
 #PRODUCT_COPY_FILES += \
@@ -1009,8 +1008,8 @@ include device/google/gs-common/sensors/sensors.mk
 $(call soong_config_set,usf,target_soc,gs201)
 
 PRODUCT_COPY_FILES += \
-	device/google/gs201/default-permissions.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/default-permissions/default-permissions.xml \
-	device/google/gs201/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
+	device/google/gs201/configs/manifests/default-permissions.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/default-permissions/default-permissions.xml \
+	device/google/gs201/configs/manifests/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
 
 # modem logging configs
 PRODUCT_COPY_FILES += \
@@ -1170,7 +1169,7 @@ include device/google/gs201/dumpstate/item.mk
 # Install product specific framework compatibility matrix
 # (TODO: b/169535506) This includes the FCM for system_ext and product partition.
 # It must be split into the FCM of each partition.
-DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs201/device_framework_matrix_product.xml
+DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs201/configs/manifests/device_framework_matrix_product.xml
 
 # Preopt SystemUI
 ifneq ($(RELEASE_SYSTEMUI_USE_SPEED_PROFILE), true)

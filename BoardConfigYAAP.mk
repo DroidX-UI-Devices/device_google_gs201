@@ -6,10 +6,8 @@
 
 # Manifests
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += vendor/yaap/config/device_framework_matrix.xml
-DEVICE_MANIFEST_FILE += device/google/gs201/android.hardware.security.rkp-service.citadel.xml
-ifneq ($(BOARD_WITHOUT_RADIO),true)
-DEVICE_MANIFEST_FILE += device/google/gs201/manifest_radio_ds.xml
-endif
+DEVICE_MANIFEST_FILE += device/google/gs201/configs/manifests/android.hardware.security.rkp-service.citadel.xml
+DEVICE_MANIFEST_FILE += device/google/gs201/configs/manifests/manifest_radio_ds.xml
 
 # Partitions
 AB_OTA_PARTITIONS += \
